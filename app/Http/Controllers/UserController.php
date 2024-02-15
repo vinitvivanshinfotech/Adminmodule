@@ -19,8 +19,6 @@ class UserController extends Controller
     {
         // finding the all user from the table
         $admin = User::all();
-
-        // return  view and pass data to this view.
         return view('admin.admindashboard', ['admins' => $admin]);
     }
 
@@ -31,8 +29,6 @@ class UserController extends Controller
     {
         // finding all role  in database and passing
         $roles = Role::all();
-
-        // return to admin add user page with roles data
         return view('admin.createadmin', ['roles' => $roles]);
     }
 
@@ -61,8 +57,6 @@ class UserController extends Controller
 
         // sending mail to user in that sending  email and password
         dispatch(new sendmail($data['email'], $data['password'], $user_roles[0]['name']));
-
-        // return  redirect after successful registration of admin.
         return redirect()->route('admin.dashboard')->with('success', 'Admin created successfully');
     }
 
@@ -72,7 +66,7 @@ class UserController extends Controller
     public function show(string $id)
     {
         //
- 
+
     }
 
     /**
@@ -88,8 +82,6 @@ class UserController extends Controller
 
         // finding the role which was assign to user  and converting it in array format so that we can use it in our view page
         $user_roles = User::find($id)->role->toArray();
-
-        // return  view with data
         return view('admin.adminedit', ['admins' => $admins, 'roles' => $roles, 'user_id' => $id, 'user_roles' => $user_roles]);
     }
 
@@ -106,8 +98,6 @@ class UserController extends Controller
 
         // syncing roles to the users
         $users->role()->sync($request->input('roles'));
-
-        // return the  index page with success message.
         return redirect()->route('admin.dashboard')->with('success', 'User update successfully');
 
     }
@@ -125,8 +115,6 @@ class UserController extends Controller
 
         //  delete the user from table.
         $admin->delete();
-
-        // return the  index page with success message.
         return redirect()->route('admin.dashboard')->with('success', 'User Delete successfully');
     }
 
@@ -135,7 +123,6 @@ class UserController extends Controller
         // finding all role  in database and passing
         $role = Role::all();
 
-        // return to admin add user page with roles data
         return view('user.login', ['roles' => $role]);
     }
 
@@ -153,7 +140,7 @@ class UserController extends Controller
         // Finding Roles which was input by user
         $roles = $request->toArray()["roles"];
 
-        // Finding the
+        // Finding the  roles of admin from the database that we have stored earlier.
         $user_id = $admin->role->pluck('id')->toArray();
 
         //

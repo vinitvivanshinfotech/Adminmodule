@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SocialiteControllerg;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -43,6 +44,20 @@ Route::get('/userlogin',[UserController::class,'login'])->name('user.login');
 Route::post('authenticate',[UserController::class,'authenticate'])->name('authenticate');
 
 Route:: view('/userdashboard','user.dashboard')->name('user.dashboard');
+
+
+Route::get('/auth/google',[SocialiteController::class,'singin'])->name('singin');
+
+Route::get('callback/google',[SocialiteController::class,'callback']);
+
+Route::view('/dashboard', 'user.dashboard')->name('dashboard');
+
+Route::get('/auth/github',[SocialiteController::class,'githredirect'])->name('singin');
+
+Route::get('github/callback',[SocialiteController::class,'callbackgit']);
+
+
+
 // Route::get('/emailtest',function(){
 
 //     $details['email'] = "vinit.m@vivanshinfotech.com";

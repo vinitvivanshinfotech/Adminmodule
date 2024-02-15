@@ -62,6 +62,9 @@
             @enderror
         </div>
         <div><a href="">Forget Password</a></div>
+        <div><a href="{{url('auth/google')}}">googlelogin</a></div>
+        <div><a href="{{url('auth/github')}}">github</a></div>
+
         <div class="d-flex justify-content-center">
             <input type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" name="button" value="Login">
         </div>
