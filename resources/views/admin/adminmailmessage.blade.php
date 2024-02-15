@@ -164,7 +164,6 @@
                         <strong class="st2">Password</strong>{{$password}}
                         <strong class="st2">Role</strong>{{ $rolename }}
                       </p>
-                      
                         <a href="{{url('http://localhost:8000/userlogin')}}" class="logo">
                             Login to your Account
                         </a>

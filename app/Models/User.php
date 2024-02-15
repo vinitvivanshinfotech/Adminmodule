@@ -22,7 +22,7 @@ class User extends Authenticatable
         'email',
         'password',
         'user_id',
-        'avatar'
+        'avatar',
     ];
 
     /**
@@ -45,6 +45,7 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    // This Function which 
     public function role()
     {
         return $this->belongsToMany(Role::class)->withTimestamps();

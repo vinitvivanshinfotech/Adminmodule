@@ -44,7 +44,7 @@ class sendmails extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'admin.test',
+            view: 'admin.adminmailmessage',
             with: ['email'=>$this->email,'password'=>$this->password,'rolename'=>$this->rolename],
 
         );
